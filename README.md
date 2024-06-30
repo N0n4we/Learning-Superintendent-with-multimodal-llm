@@ -7,3 +7,4 @@
 memory用来存设定，可以自己制定
 
 注：本仓库用的是openrouter，apikey自备
+注：需要创建两个空文件夹"record"和"screenshot"
