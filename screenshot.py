@@ -5,7 +5,7 @@ import requests
 import json
 import base64
 
-
+# OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
 OPENROUTER_API_KEY = 'your_api_key'
 
 with open(os.path.join('prompt', 'describePrompt.txt'), 'r', encoding='utf-8') as file:
@@ -15,7 +15,9 @@ with open(os.path.join('prompt', 'describePrompt.txt'), 'r', encoding='utf-8') a
 def Screenshot():
 	screenshot = pyautogui.screenshot()
 	now = datetime.now()
-	save_path = os.path.join("screenshot", f"{now.year}_{now.month}-{now.day}_{now.hour}-{now.minute}.png")
+	save_path = os.path.join("screenshot", f"{now.month}-{now.day}", f"{now.hour}-{now.minute}.png")
+	if not os.path.exists(os.path.dirname(save_path)):
+		os.makedirs(os.path.dirname(save_path))
 	screenshot.save(save_path)
 	return save_path, now
 

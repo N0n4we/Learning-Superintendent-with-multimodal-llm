@@ -7,8 +7,8 @@ def checkScreen():
     if is_entertaining == False:
         return None
 
-    screenshot_path = os.path.join("screenshot", f"{now.year}_{now.month}-{now.day}_{now.hour}-{now.minute}.png")
-    record_path = os.path.join("record", f'{now.year}-{now.month}-{now.day}.txt')
+    screenshot_path = os.path.join("screenshot", f"{now.month}-{now.day}", f"{now.hour}-{now.minute}.png")
+    record_path = os.path.join("record", f'{now.month}-{now.day}.txt')
 
     with open(os.path.join("memory", 'AgentCharacter.txt'), 'r', encoding='utf-8') as file:
         AgentCharacter = file.read()

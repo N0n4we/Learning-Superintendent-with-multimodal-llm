@@ -5,13 +5,7 @@
 你对主人的印象如下
 "{UserPersonality}"
 
-主人今天的动作如下
-"{record}"
-
 你的记忆如下
 "{Matters}"
-
-你的想法如下
-"{Thoughts}"
 
 现在的时间是{now.hour}:{now.minute}，你正在查看主人的电脑屏幕，请以给主人发消息的形式回复
