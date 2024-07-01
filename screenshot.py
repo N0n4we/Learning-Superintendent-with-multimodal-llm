@@ -67,7 +67,10 @@ def packMessages(prompt, screenshot_path=None, messages=[]):
 def DescribeScreen(screenshot_path):
 	messages = packMessages(describePrompt, screenshot_path)
 	reply = request(messages)
-	messages = packMessages(f"描述如下\n\"{reply}\"\n根据描述判断，主人有没有在进行娱乐活动。只回答“是”或“否”")
+	with open(os.path.join('prompt', 'discriminatePrompt.txt'), 'r', encoding='utf-8') as file:
+		discriminatePrompt = file.read()
+	discriminatePrompt = discriminatePrompt.format(**locals())
+	messages = packMessages(discriminatePrompt)
 	is_entertaining = "是"
 	retries = 0
 	while isinstance(is_entertaining, str):
