@@ -6,8 +6,10 @@ import json
 import base64
 
 
-OPENROUTER_API_KEY = "your_api_key"
-describePrompt = """屏幕上有什么？使用者（请称呼“主人”）正在干什么？（请简短回复）"""
+OPENROUTER_API_KEY = 'your_api_key'
+
+with open(os.path.join('prompt', 'describePrompt.txt'), 'r', encoding='utf-8') as file:
+	describePrompt = file.read()
 
 # 捕获整个屏幕
 def Screenshot():
@@ -34,7 +36,7 @@ def request(messages, model_name="anthropic/claude-3.5-sonnet"):
 
 def packMessages(prompt, screenshot_path=None, messages=[]):
 	if screenshot_path is None:
-		messages.append({
+		messages = [{
 			"role": "user",
 			"content": [
 				{
@@ -42,11 +44,11 @@ def packMessages(prompt, screenshot_path=None, messages=[]):
 					"text": prompt
 				}
 			]
-		})
+		}]
 	else:
 		with open(screenshot_path, "rb") as image_file:
 			encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
-		messages.append({
+		messages = [{
 			"role": "user",
 			"content": [
 				{
@@ -58,7 +60,7 @@ def packMessages(prompt, screenshot_path=None, messages=[]):
 					"image_url": {"url": f"data:image/png;base64,{encoded_image}"}
 				}
 			]
-		})
+		}]
 	return messages
 
 
