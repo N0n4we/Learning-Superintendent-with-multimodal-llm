@@ -16,8 +16,6 @@ def checkScreen():
         UserPersonality = file.read()
     with open(os.path.join("memory", 'Matters.txt'), 'r', encoding='utf-8') as file:
         Matters = file.read()
-    with open(os.path.join("memory", 'Thoughts.txt'), 'r', encoding='utf-8') as file:
-        Thoughts = file.read()
     with open(record_path, 'r', encoding='utf-8') as file:
         record = file.read()
     with open(os.path.join('prompt', 'replyPrompt.txt'), 'r', encoding='utf-8') as file:
